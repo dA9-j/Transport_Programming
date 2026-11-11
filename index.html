@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transportation Problem</title>
+
+<!-- โหลดฟอนต์ Kanit จาก Google Fonts (ต้องต่อเน็ต ถ้าไม่มีเน็ตจะใช้ sans-serif แทนอัตโนมัติ) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+
+<!-- แถบดำด้านบน -->
+<div class="topbar">
+  <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+  <span class="topbar-title">transportation-problem / index.html</span>
+</div>
+
+<div class="stripe"></div>
+
+<div class="container">
+  <h1>Transportation Problem</h1>
+
+  <!-- ================= Step 1: กรอกจำนวน Supply / Demand และเลือกโหมด ================= -->
+  <div class="card card-orange">
+    <h2><span class="badge">1</span>กำหนดขนาดตาราง</h2>
+    <div class="row">
+      <label>จำนวน Supply (แหล่งผลิต): <input type="number" id="supplyCount" value="3" min="1" max="8"></label>
+      <label>จำนวน Demand (จุดรับสินค้า): <input type="number" id="demandCount" value="4" min="1" max="8"></label>
+    </div>
+    <div class="row">
+      <label><input type="radio" name="mode" value="min" checked> Minimize (หาต้นทุนต่ำสุด)</label>
+      <label><input type="radio" name="mode" value="max"> Maximize (หากำไรสูงสุด)</label>
+    </div>
+    <button class="btn-orange" onclick="createTable()">สร้างตาราง</button>
+  </div>
+
+  <!-- ================= Step 2: ตารางกรอกข้อมูล (JavaScript เป็นคนสร้าง) ================= -->
+  <div class="card card-yellow">
+    <h2><span class="badge badge-yellow">2</span>กรอกข้อมูล</h2>
+    <div id="inputArea">กรุณากดปุ่ม "สร้างตาราง" ใน Step 1 ก่อน</div>
+  </div>
+
+  <!-- ================= Step 3: ปุ่มคำนวณ ================= -->
+  <div class="card card-green">
+    <h2><span class="badge badge-green">3</span>คำนวณ</h2>
+    <button class="btn-yellow" onclick="calculateNorthwest()">คำนวณขั้นแรก (Northwest Corner)</button>
+    <button class="btn-green" onclick="calculateSteppingStone()">คำนวณขั้นสุดท้าย (Stepping Stone)</button>
+
+    <!-- ที่แสดงผลลัพธ์ของแต่ละขั้น -->
+    <div id="resultNW"></div>
+    <div id="resultSS"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

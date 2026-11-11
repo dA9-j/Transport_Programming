@@ -1,0 +1,280 @@
+/* ===== สีทั้งหมดอยู่ที่นี่ แก้ที่เดียวเปลี่ยนทั้งเว็บ ===== */
+:root {
+  --primary: #6366f1;      /* อินดิโก: สีหลัก (Step 1, ปุ่มหลัก) */
+  --primary-soft: #eef0ff;
+  --amber: #f59e0b;        /* เหลืองอำพัน: Step 2, ช่องที่จัดสรรสินค้า */
+  --amber-soft: #fff4d6;
+  --emerald: #10b981;      /* เขียวมรกต: Step 3, ผลรวม */
+  --emerald-soft: #dcfaf0;
+  --rose: #f43f5e;         /* ชมพูแดง: ป้าย Dummy */
+  --ink: #1e293b;          /* สีตัวอักษรหลัก */
+  --muted: #64748b;        /* สีตัวอักษรรอง */
+  --bg: #f5f6fb;           /* พื้นหลังหน้าเว็บ */
+  --surface: #ffffff;      /* พื้นการ์ด */
+  --line: #e5e8f0;         /* เส้นขอบ */
+  --radius: 18px;
+  --shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 8px 24px rgba(15, 23, 42, .06);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background:
+    radial-gradient(900px 400px at 10% -10%, #e0e4ff 0%, transparent 60%),
+    radial-gradient(700px 400px at 100% 0%, #d9f7ec 0%, transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* แถบบน: กระจกใสติดด้านบน */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, .75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.dot-red { background: var(--rose); }
+.dot-yellow { background: var(--amber); }
+.dot-green { background: var(--emerald); }
+.topbar-title { margin-left: 10px; font-weight: 300; letter-spacing: .3px; }
+
+/* เส้นไล่สีใต้แถบบน */
+.stripe {
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--amber), var(--emerald));
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -.5px;
+  margin: 0 0 24px;
+  background: linear-gradient(90deg, var(--primary), #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* การ์ด */
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+}
+.card-orange::before { background: var(--primary); }
+.card-yellow::before { background: var(--amber); }
+.card-green::before { background: var(--emerald); }
+.card h2 {
+  margin: 4px 0 18px;
+  font-weight: 500;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+}
+
+/* วงกลมเลขขั้นตอน */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+.badge-yellow { background: var(--amber); }
+.badge-green { background: var(--emerald); }
+
+/* ช่องกรอก */
+input[type="number"] {
+  font-family: 'Kanit', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  width: 84px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  transition: border-color .15s, box-shadow .15s, background .15s;
+}
+input[type="number"]:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, .15);
+}
+label { margin-right: 18px; color: var(--ink); }
+input[type="radio"] { accent-color: var(--primary); margin-right: 4px; }
+.row { margin-bottom: 14px; }
+
+/* ปุ่ม */
+button {
+  font-family: 'Kanit', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--ink);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 22px;
+  margin: 0 8px 8px 0;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, .12);
+  transition: transform .15s, box-shadow .15s, filter .15s;
+}
+button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .18); }
+button:active { transform: translateY(0); }
+.btn-orange { background: linear-gradient(135deg, var(--primary), #8b5cf6); }
+.btn-yellow { background: linear-gradient(135deg, #fbbf24, var(--amber)); color: #422006; }
+.btn-green { background: linear-gradient(135deg, #34d399, var(--emerald)); color: #022c22; }
+
+/* ตาราง */
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+table { border-collapse: separate; border-spacing: 0; width: 100%; margin: 0; }
+th, td {
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+tr:last-child th, tr:last-child td { border-bottom: none; }
+th:last-child, td:last-child { border-right: none; }
+th {
+  background: #f1f3f9;
+  color: var(--ink);
+  font-weight: 500;
+  white-space: nowrap;
+}
+td input[type="number"] { width: 72px; }
+
+/* ช่องที่จัดสรรสินค้า */
+.filled {
+  background: var(--amber-soft);
+  color: #92400e;
+  font-weight: 600;
+}
+.small { font-size: 12px; font-weight: 400; color: var(--muted); }
+.dummy-label {
+  display: inline-block;
+  background: var(--rose);
+  color: #fff;
+  border-radius: 999px;
+  padding: 1px 10px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* กล่องผลรวม */
+.total-box {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 20px;
+  background: var(--emerald-soft);
+  color: #065f46;
+  border: 1.5px solid #a7f0d2;
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 17px;
+}
+.info { margin-top: 10px; color: var(--muted); font-size: 14px; }
+h3 { font-weight: 500; margin: 24px 0 4px; }
+
+@media (max-width: 600px) {
+  h1 { font-size: 26px; }
+  .card { padding: 18px; }
+  button { width: 100%; margin-right: 0; }
+}
+
+/* ===== ส่วนแสดงรอบปรับปรุงของ Stepping Stone ===== */
+.round-box {
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: #fafbff;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--primary);
+  border-radius: 14px;
+}
+.round-box h4 { margin: 0 0 10px; font-weight: 600; font-size: 18px; color: var(--primary); }
+.round-done { border-left-color: var(--emerald); }
+.round-done h4 { color: #047857; }
+.step-title { margin: 16px 0 4px; font-weight: 500; }
+
+/* ป้ายดัชนีของแต่ละช่องว่าง */
+.idx {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  padding: 2px 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.idx-best { background: var(--primary); border-color: var(--primary); color: #fff; font-weight: 500; }
+
+/* เครื่องหมาย + และ - */
+.sign {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: middle;
+}
+.sign-plus { background: var(--emerald); }
+.sign-minus { background: var(--rose); }
+td.cell-plus { box-shadow: inset 0 0 0 2px var(--emerald); }
+td.cell-minus { box-shadow: inset 0 0 0 2px var(--rose); }
+
+.path-list { margin-top: 10px; line-height: 2.2; }
+.path-step { white-space: nowrap; }
+.total-small { font-size: 15px; padding: 8px 16px; margin-top: 12px; }
